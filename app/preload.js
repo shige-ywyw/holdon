@@ -1,5 +1,7 @@
 const {ipcRenderer} = require('electron');
 const {writable} = require('svelte/store');
+const spawn = require('child_process').spawn;
+
 
 window.holdon = {};
 
@@ -17,6 +19,11 @@ window.holdon.delete = function(data) {
 window.holdon.close = function() {
   ipcRenderer.invoke("closeWindow");
 }
+
+window.holdon.clearrecyclebin = function() {
+  spawn("powershell.exe",[`Clear-RecycleBin -Force`]);
+}
+
 
 ipcRenderer.on("clipboardHistoryUpdated", (_, message) => {
   window.holdon.history.set(message);

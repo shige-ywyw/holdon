@@ -62,7 +62,8 @@
 		else if (searchText.trim().length) {
 			regex = new RegExp(searchText, 'ig');
 			results = $clips.filter(c=>c.text.match(regex))
-		} else {
+		}
+		else {
 			regex = null;
 			results = $clips.slice(0,25);
 		}
@@ -104,6 +105,11 @@
 		if (e.key == 'Enter' && selectedClip != -1) {
 			window.holdon.paste(results[selectedClip]);
 		}
+
+		if (searchText === "'e" && e.key == 'Enter' ) {
+			window.holdon.clearrecyclebin();
+		}
+
 
 		if (e.key == 'Escape') {
 			window.holdon.close();
