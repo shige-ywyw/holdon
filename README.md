@@ -11,5 +11,6 @@ Yet another clipboard history manager.
 ```
 $ clone https://github.com/flexphere/holdon.git
 $ cd holdon
+$ npm install
 $ node ./scripts/build.js
 ```
